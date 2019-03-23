@@ -5,7 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">All Questions</div>
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h2>All Questions</h2>
+                            <div class="ml-auto">
+                                <a href="{{ route('questions.create') }}" class="btn btn-outline-secondary">Ask Question</a>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="card-body">
                         @foreach ($questions as $question)
@@ -26,7 +33,8 @@
                                         <a href="{{ $question->url }}">{{ $question->title }}</a>
                                     </h3>
                                     <p class="lead">
-                                        Asked by <a href="{{ $question->user->url }}">{{ $question->user->name }}</a>
+                                        Asked by
+                                        <a href="{{ $question->user->url }}">{{ $question->user->name }}</a>
                                         <small class="text-muted">{{ $question->created_date }}</small>
                                     </p>
                                     {{ str_limit($question->body, 250) }}
