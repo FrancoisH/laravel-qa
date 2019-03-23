@@ -24,6 +24,7 @@
                                 <label for="question-title">Question Title</label>
                                 <input type="text"
                                        name="title"
+                                       value="{{ old('title') }}"
                                        id="question-title"
                                        class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" />
 
@@ -38,7 +39,9 @@
                                 <textarea name="body"
                                           id="question-body"
                                           rows="10"
-                                          class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}"></textarea>
+                                          class="form-control {{ $errors->has('body') ? 'is-invalid' : '' }}">
+                                    {{ old('body') }}
+                                </textarea>
 
                                 @if($errors->has('body'))
                                     <div class="invalid-feedback">
