@@ -7,18 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * App\Question
  *
- * @property int $id
- * @property string $title
- * @property string $slug
- * @property string $body
- * @property int $views
- * @property int $answers
- * @property int $votes
- * @property int|null $best_answer_id
- * @property int $user_id
+ * @property int                             $id
+ * @property string                          $title
+ * @property string                          $slug
+ * @property string                          $body
+ * @property int                             $views
+ * @property int                             $answers
+ * @property int                             $votes
+ * @property int|null                        $best_answer_id
+ * @property int                             $user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \App\User $user
+ * @property-read \App\User                  $user
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Question newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Question newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Question query()
@@ -40,13 +40,24 @@ class Question extends Model
     protected $fillable = ['title', 'body'];
 
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;
-        $this->attributes['slug'] = str_slug($value);
+        $this->attributes['slug']  = str_slug($value);
+    }
+
+    public function getUrlAttribute()
+    {
+        return route("questions.show", $this->id);
+    }
+
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at->diffForHumans();
     }
 }
