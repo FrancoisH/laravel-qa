@@ -34,6 +34,12 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereViews($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereVotes($value)
  * @mixin \Eloquent
+ * @property int $answers_count
+ * @property-read mixed $body_html
+ * @property-read mixed $created_date
+ * @property-read mixed $status
+ * @property-read mixed $url
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Question whereAnswersCount($value)
  */
 class Question extends Model
 {
