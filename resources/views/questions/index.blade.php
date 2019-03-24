@@ -37,19 +37,30 @@
                                             <a href="{{ $question->url }}">{{ $question->title }}</a>
                                         </h3>
                                         <div class="ml-auto">
-                                            <a href="{{ route('questions.edit', $question->id) }}"
-                                               class="btn btn-sm btn-outline-info">Edit
-                                            </a>
+                                            @auth
+                                                @can ('update-question', $question)
+                                                    <a href="{{ route('questions.edit', $question->id) }}"
+                                                       class="btn btn-sm btn-outline-info">Edit
+                                                    </a>
+                                                @endcan
+                                            @endauth
                                         </div>
-                                        <form class="form-delete" action="{{ route('questions.destroy', $question->id) }}"
-                                              method="post">
-                                            @method('DELETE')
-                                            @csrf
-                                            <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure?')"
-                                            >
-                                                Delete
-                                            </button>
-                                        </form>
+                                        @auth
+                                            @can ('delete-question', $question)
+                                                <form class="form-delete"
+                                                      action="{{ route('questions.destroy', $question->id) }}"
+                                                      method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button type="submit"
+                                                            class="btn btn-sm btn-outline-danger"
+                                                            onclick="return confirm('Are you sure?')"
+                                                    >
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            @endcan
+                                        @endauth
                                     </div>
                                     <p class="lead">
                                         Asked by
