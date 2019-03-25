@@ -28,6 +28,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Answer whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Answer whereVoteCount($value)
  * @mixin \Eloquent
+ * @property int $votes_count
+ * @property-read mixed $created_date
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Answer whereVotesCount($value)
  */
 class Answer extends Model
 {

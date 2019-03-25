@@ -33,6 +33,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @mixin \Eloquent
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Answer[] $answers
  * @property-read mixed $url
+ * @property-read mixed $avatar
  */
 class User extends Authenticatable
 {
