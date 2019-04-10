@@ -53,6 +53,15 @@ form.form-delete {
   margin-left: 5px;
 }
 
+.answer-btn {
+  & .ml-auto, & form.form-delete {
+    display: inline-block;
+  }
+  & form.form-delete {
+    margin-left: 0px !important;
+  }
+}
+
 .vote-controls {
   min-width: 60px;
   margin-right: 30px;
